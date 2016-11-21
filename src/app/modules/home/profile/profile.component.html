@@ -1,0 +1,55 @@
+<div class="ui top attached secondary segment">
+    <h3>Profil</h3>
+</div>
+<div class="ui bottom attached segment">
+    <address *ngIf="user">
+        <p>
+            <strong>
+                <i class="ui icon user" title="Nom d'utilisateur" ></i>
+                {{ user.username }}
+            </strong>
+        </p>
+        <p>
+            <i class="ui icon mail" title="Adresse mail"></i>
+            <a href="mailto:#">
+                {{ user.mail }}
+            </a>
+        </p>
+        <p>
+            <button type="button" (click)="triggerPhoneModal()" class="ui compact icon button circular" title="Mettre numéro de téléphone à jour">
+                <i class="ui icon phone"></i>
+            </button> {{ user.phoneNumber }}
+        </p>
+    </address>
+</div>
+
+<form (submit)="submitPhone($event,phoneNumber)" class="ui basic modal" id="phone_modal" #phoneForm="ngForm" >
+    <i class="close icon"></i>
+    <div class="header">
+       Mettre à jour numéro de téléphone
+    </div>
+    <div class="content">
+        <div class="ui big fluid icon input">
+            <input  minlength="10"
+                    ngModel
+                    #phoneNumber
+                    name="phoneNumber"
+                    required
+                    maxlength="10"
+                    pattern="^\d{10}$"
+                    type="text"
+                    placeholder="10 chiffres" />
+            <i class="ui icon phone"></i>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="two fluid ui inverted buttons">
+            <button type="button" class="ui cancel red basic inverted button">
+                <i class="remove icon"></i> Annuler
+            </button>
+            <button type="submit" [disabled]="!phoneForm.valid" class="ui ok green basic inverted button">
+                <i class="checkmark icon"></i> Mettre à jour
+            </button>
+        </div>
+    </div>
+</form>

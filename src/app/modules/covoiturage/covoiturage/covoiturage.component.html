@@ -1,0 +1,55 @@
+<div class="ui grid hover segment" (click)="showModal(covoitData.id)">
+	<div class="description eight wide column">
+		<h2>{{ covoitData.from }} <i class="chevron circle right icon"></i> {{ covoitData.to }}</h2>
+	</div>
+	<div class="meta eight wide column">
+		<div class="row">
+			<i class="ui icon calendar" title="Date de départ"></i> {{ covoitData.date | date : 'dd/MM/yyyy' }}
+		</div>
+		<div class="row">
+			<i class="ui icon user" title="Proposé par"></i> {{ covoitData.proposer && ( covoitData.proposer.nom + ' ' + covoitData.proposer.prenom
+			) }}
+		</div>
+		<div class="row" *ngIf="covoitData.steps.length">
+			<i class="ui icon flag" title="Etapes"></i> {{ covoitData.steps.length }} étape{{ covoitData.steps.length > 1 ? 's' :
+			'' }}
+		</div>
+	</div>
+</div>
+<div class="ui basic modal" id="{{'covoit_num_'+covoitData.id}}">
+	<i class="close icon"></i>
+	<div class="header">
+		<div class="row header" title="Départ">
+			<i class="ui icon flag checkered"></i> {{ covoitData.from }}
+		</div>
+		<div class="row header" title="Arrivée">
+			<i class="ui icon marker"></i> {{ covoitData.to }}
+		</div>
+	</div>
+	<div class="content">
+		<div class="row">
+			<i class="ui icon calendar" title="Date de départ"></i> {{ covoitData.date | date : 'dd/MM/yyyy' }}
+		</div>
+		<div class="row" *ngIf="covoitData.proposer">
+			<i class="ui icon user" title="Proposé par"></i> {{ covoitData.proposer.nom + ' ' + covoitData.proposer.prenom }}
+		</div>
+		<div class="row" *ngIf="covoitData.proposer && covoitData.proposer.phoneNumber" title="Numéro de téléphone">
+			<i class="ui icon phone" *ngIf="covoitData.proposer.phoneNumber" title="Numéro"></i> {{ covoitData.proposer.phoneNumber
+			}}
+		</div>
+		<div class="row" *ngIf="covoitData.proposer && covoitData.proposer.mail">
+			<i class="ui icon mail" title="Email"></i>
+			<a href="mailto:{{ covoitData.proposer.mail }}">{{ covoitData.proposer.mail }}</a>
+		</div>
+	</div>
+	<div class="content">
+		<div class="row" *ngIf="covoitData.steps.length">
+			<i class="ui icon flag" title="Etapes"></i> Etape{{ covoitData.steps.length > 1 ? 's' : ''}} :
+			<div class="ui list">
+				<div class="item" *ngFor="let st of covoitData.steps">
+					<i class="ui icon angle right"></i> {{ st }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

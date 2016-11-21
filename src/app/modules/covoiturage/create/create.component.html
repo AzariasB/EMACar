@@ -1,0 +1,63 @@
+<sm-segment>
+	<h2>
+		Créer un covoiturage
+	</h2>
+	<form [hidden]="submitted" class="ui form" (submit)="submit($event)" name="create-form" novalidate #createForm="ngForm">
+		<div class="field">
+			<label>Départ*</label>
+			<select name="depart" [(ngModel)]="covoit.from" required class="ui fluid search dropdown"></select>
+		</div>
+		<div class="field ">
+			<label>Arrivée*</label>
+			<div class="ui labeled left icon input">
+				<i class="icon flag"></i>
+				<select name="arrivee" [(ngModel)]="covoit.to" required class="ui fluid search dropdown"></select>
+			</div>
+		</div>
+		<div class="field">
+			<label>Etapes</label>
+			<select name="etapes" [(ngModel)]="covoit.steps" class="ui fluid search dropdown" multiple=""></select>
+		</div>
+		<div class="field">
+			<label>Date*</label>
+			<div class="ui calendar" id="day">
+				<div class="ui input left icon">
+					<i class="calendar icon"></i>
+					<input id="date_dep" name="date" [(ngModel)]="dummyDate" class="ui fluid" required type="text" placeholder="Date">
+				</div>
+			</div>
+		</div>
+		<div class="field">
+			<label>Description</label>
+			<textarea [(ngModel)]="covoit.description" name="description" rows="2"></textarea>
+		</div>
+		<button [disabled]="!createForm.form.valid || covoit.to == covoit.from" class="ui button positive" type="submit">Créer !</button>
+	</form>
+	<div [hidden]="!submitted">
+		<h2>
+			Le covoiturage a bien été créé !
+			<i class="icon checkmark green"></i>
+		</h2>
+		Récapitulation des informations :
+		<div class="item">
+			<div class="content">
+				<div class="header">
+					 {{ covoit.from }}
+					  <i class="chevron circle right icon"></i>
+					 {{ covoit.to }}
+					 </div>
+				<div class="meta">
+					<span>Départ le {{ covoit.date | date : 'dd/MM/yyyy' }}</span>
+					<span>Proposé par {{ covoit.contact }}</span>
+				</div>
+				<div *ngIf="covoit.steps" class="description">
+					Passage par :
+
+				</div>
+			</div>
+		</div>
+		<button routerLink="/home" class="ui button teal" type="button">
+			Retourner à l'accueil
+		</button>
+	</div>
+</sm-segment>

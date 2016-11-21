@@ -1,0 +1,33 @@
+<div class="ui container">
+	<nav class="ui top attached menu">
+		<div class="header item">
+			EMACar
+		</div>
+		<a class="item" routerLink="/home" routerLinkActive="true" >
+			Accueil
+		</a>
+		<a class="item" routerLink="create" routerLinkActive="active" >
+			Créer covoit
+		</a>
+		<a class="item" routerLink="profile" routerLinkActive="active"  >
+			Mon profil
+		</a>
+		<a class="item" routerLink="about" routerLinkActive="active" >
+			A propos
+		</a>
+		<a class="item" (click)="logout()">
+			Se déconnecter
+		</a>
+		<div class="right menu">
+			<div class="ui right aligned category search item">
+			<div class="ui transparent icon input">
+				<input class="prompt" type="text" placeholder="Rechercher...">
+				<i class="search link icon"></i>
+			</div>
+			<div class="results"></div>
+			</div>
+		</div>
+	</nav>
+	<router-outlet></router-outlet>
+</div>
+

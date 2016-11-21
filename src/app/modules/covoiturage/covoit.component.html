@@ -1,0 +1,8 @@
+<div class="ui container">
+    <div *ngIf="covoiturages.length" class="ui container grid" >
+        <covoiturage class="ui height wide column" *ngFor="let cov of covoiturages" [covoitData]="cov"></covoiturage>
+    </div>
+    <sm-segment *ngIf="!covoiturages.length" >
+        Aucun covoiturage trouvés
+    </sm-segment>
+</div>
