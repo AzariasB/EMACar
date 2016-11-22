@@ -19,15 +19,16 @@
 			Se déconnecter
 		</a>
 		<div class="right menu">
-			<div class="ui right aligned category search item">
-			<div class="ui transparent icon input">
-				<input class="prompt" type="text" placeholder="Rechercher...">
-				<i class="search link icon"></i>
+			<div id="main_search" class="ui right aligned category search item">
+			<div class="ui 1transparent icon input">
+				<input class="prompt"  type="text" placeholder="Rechercher..." #searchInput>
+				<i class="search link icon" *ngIf="!searchInput.value" ></i>
+				<i class="remove link icon" (click)="resetSearch(searchInput)" *ngIf="searchInput.value"></i>
 			</div>
 			<div class="results"></div>
 			</div>
 		</div>
 	</nav>
-	<router-outlet></router-outlet>
+	<router-outlet (activate)="onActivate($event)" ></router-outlet>
 </div>
 

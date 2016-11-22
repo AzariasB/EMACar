@@ -9,7 +9,6 @@ import { database } from './config';
 import * as bcrypt from 'bcrypt';
 
 let connection = null;
-
 const saltRound = 10;
 
 export function saveCovoiturage(cov: Covoiturage, callback: Function = _ => { }) {

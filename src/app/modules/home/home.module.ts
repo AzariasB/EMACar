@@ -12,6 +12,7 @@ import { CovoitModule } from "../covoiturage/covoit.module";
 import { AboutComponent} from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 
+
 import { UserService } from '../../service/user.service';
 import { CanActivateViaAuthGuard } from '../../service/guard.service';
 

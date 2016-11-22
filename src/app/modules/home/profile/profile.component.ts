@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import template from './profile.component.html';
 
 @Component({
-    selector: "profile",
+    selector: 'profile',
     template,
     styles : [
         '.segment {font-size : 18px;}'
@@ -11,9 +11,9 @@ import template from './profile.component.html';
 })
 export class ProfileComponent {
 
-    private user : any;
+    private user: any;
 
-    constructor(private userService : UserService) {
+    constructor(private userService: UserService) {
         let func = user => this.user = user;
         this.userService.getUser(func);
     }
